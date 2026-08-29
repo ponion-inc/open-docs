@@ -1,0 +1,39 @@
+# GitHub Pages への配信（2026-08-29 追加）。
+#
+# 既存の自前サーバ配信（docs.ponion.jp）は反映に時間がかかるため、Pages を併用する。
+# **既存の構成は変えない**: web ルートは従来どおり `public/` で、その中身をそのまま
+# Pages のアーティファクトとしてアップロードする（`public/` を Pages のソースフォルダに
+# できるのは Actions 経由のみ = ブランチ配信では `/` か `/docs` しか選べないため）。
+#
+# 公開 URL: https://ponion-inc.github.io/open-docs/<プロダクト>/<ファイル>.html
+name: Deploy public/ to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時実行は 1 本に絞る（進行中の実行はキャンセルせず、公開済みの内容を保つ）
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4
