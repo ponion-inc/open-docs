@@ -1,0 +1,76 @@
+body {
+    background-color: #063342;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #ffffff;
+}
+
+h1 {
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 10px;
+}
+
+h2 {
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
+}
+
+p, li {
+    margin-bottom: 10px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+ol.none {
+   list-style: none;
+}
+ol.none li {
+    list-style: none;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* --- brain-dump-tasker 用の追記（本文に表・h3 を使うため。strayrobot からのコピーに追加） --- */
+h3 {
+    color: #ffffff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 16px;
+    display: block;
+    overflow-x: auto;
+}
+
+th, td {
+    border: 1px solid #ffffff;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.08);
+}
